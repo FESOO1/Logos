@@ -269,6 +269,7 @@ function displayingTheStoredData() {
             localStorage.setItem('logoNameDataLS', JSON.stringify(logoNameData));
             localStorage.setItem('logoDomainDataLS', JSON.stringify(logoDomainData));
 
+            
             savedIntoFavorite = false;
             localStorage.setItem('savedIntoFavoriteLS', savedIntoFavorite);
         });
