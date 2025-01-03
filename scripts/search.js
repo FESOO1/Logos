@@ -3,8 +3,8 @@ const searchButton = document.getElementById('searchButton');
 const errorParagraph = document.querySelector('.logos-input-paragraph');
 const logosOutput = document.querySelector('.logos-output');
 const logosOutputFavorites = document.querySelector('.logos-output-favorites');
-const logoSearchData = [];
 const logoSearchFavoriteData = [];
+const logoNameLowerData = [];
 const logoIconData = [];
 const logoNameData = [];
 const logoDomainData = [];
@@ -91,11 +91,13 @@ async function searchForLogo() {
                 `;
 
                 // PUSHING THE SAVED ELEMENT'S OUTPUT INTO ARRAYS
+                logoNameLowerData.push(logoData[i].name.toLowerCase());
                 logoIconData.push(logoData[i].icon);
                 logoNameData.push(logoData[i].name);
                 logoDomainData.push(logoData[i].domain);
 
                 // STORING THE ABOVE ARRAYS IN LOCAL STORAGE AND FAVORITE CONTAINER'S VARIABLE
+                localStorage.setItem('logoNameLowerDataLS', JSON.stringify(logoNameLowerData));
                 localStorage.setItem('logoIconDataLS', JSON.stringify(logoIconData));
                 localStorage.setItem('logoNameDataLS', JSON.stringify(logoNameData));
                 localStorage.setItem('logoDomainDataLS', JSON.stringify(logoDomainData));
@@ -116,6 +118,22 @@ async function searchForLogo() {
                     logosOutputFavorites.classList.remove('logos-output-favorites-active');
                 };
 
+                // 
+                const clickedElementName = logoData[i].name;
+                const clickedElement = logoNameData.indexOf(clickedElementName);
+                console.log(clickedElement);
+                // REMOVING ITEMS FROM LOCAL STORAGE
+                logoNameLowerData.splice(clickedElement, 1);
+                logoIconData.splice(clickedElement, 1);
+                logoNameData.splice(clickedElement, 1);
+                logoDomainData.splice(clickedElement, 1);
+                
+                // UPDATING THE ARRAYS THAT ARE STORED IN LOCAL STORAGE
+                localStorage.setItem('logoNameLowerDataLS', JSON.stringify(logoNameLowerData));
+                localStorage.setItem('logoIconDataLS', JSON.stringify(logoIconData));
+                localStorage.setItem('logoNameDataLS', JSON.stringify(logoNameData));
+                localStorage.setItem('logoDomainDataLS', JSON.stringify(logoDomainData));
+
                 savedIntoFavorite = false;
                 localStorage.setItem('savedIntoFavoriteLS', savedIntoFavorite);
             };
@@ -128,10 +146,13 @@ async function searchForLogo() {
 searchButton.addEventListener('click', e => {e.preventDefault(); searchForLogo()});
 
 
+
+
 // DIPLAYING THE STORED DATA
 
 function displayingTheStoredData() {
     const isFavoriteContainerActiveLS = localStorage.getItem('isFavoriteContainerActiveLS');
+    const logoNameLowerDataLS = JSON.parse(localStorage.getItem('logoNameLowerDataLS'));
     const logoIconDataLS = JSON.parse(localStorage.getItem('logoIconDataLS'));
     const logoNameDataLS = JSON.parse(localStorage.getItem('logoNameDataLS'));
     const logoDomainDataLS = JSON.parse(localStorage.getItem('logoDomainDataLS'));
@@ -162,8 +183,16 @@ function displayingTheStoredData() {
                     </div>
                 </div>
             `;
+
+            // UPDATING THE ARRAYS
+            logoNameLowerData.push(logoNameLowerDataLS[i]);
+            logoIconData.push(logoIconDataLS[i]);
+            logoNameData.push(logoNameDataLS[i]);
+            logoDomainData.push(logoDomainDataLS[i]);
         };
     };
 };
 
 displayingTheStoredData();
+
+/* console.log(logoNameLowerData.indexOf('apple')); */
