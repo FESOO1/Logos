@@ -231,6 +231,53 @@ function displayingTheStoredData() {
             logoDomainData.push(logoDomainDataLS[i]);
         };
     };
+
+    // COPY BUTTON AND FAVORITE BUTTON
+    const copyButtons = logosOutputFavorites.querySelectorAll('.logo-output-button-copy');
+    const favoritesButtons = logosOutputFavorites.querySelectorAll('.logo-output-button-favorite');
+
+
+    for (let i = 0; i < copyButtons.length; i++) {
+        // COPY BUTTON
+        copyButtons[i].addEventListener('click', () => {
+            navigator.clipboard.writeText(logoIconData[i]);
+            console.log(logoIconData[i]);
+            copyButtons[i].textContent = 'ICON URL COPIED';
+            setTimeout(() => copyButtons[i].textContent = 'COPY ICON URL',5000);
+        });
+        // FAVORITE BUTTON
+        favoritesButtons[i].addEventListener('click', () => {
+            const clickedElementName = logoData[i].name;
+            const clickedElement = logoNameData.indexOf(clickedElementName);
+
+            // REMOVING THE CLASS FROM THE BUTTON
+            favoritesButtons[i].classList.remove('logo-output-button-favorited');
+            
+            // REMOVING THE ELEMENT FROM THE FAVORITE CONTAINER
+            const logoOutput = logosOutputFavorites.querySelectorAll('.logo-output');
+            logosOutputFavorites.removeChild(logoOutput[clickedElement]);
+
+            // DEACTIVATING THE FAVORITE CONTAINER IF IT HAS NO ELEMENT
+            if (logosOutputFavorites.childElementCount === 1) {
+                isFavoriteContainerActive = false;
+                logosOutputFavorites.classList.remove('logos-output-favorites-active');
+                localStorage.setItem('isFavoriteContainerActiveLS', isFavoriteContainerActive);
+            };
+
+            // REMOVING ITEMS FROM LOCAL STORAGE
+            logoIconData.splice(clickedElement, 1);
+            logoNameData.splice(clickedElement, 1);
+            logoDomainData.splice(clickedElement, 1);
+            
+            // UPDATING THE ARRAYS THAT ARE STORED IN LOCAL STORAGE
+            localStorage.setItem('logoIconDataLS', JSON.stringify(logoIconData));
+            localStorage.setItem('logoNameDataLS', JSON.stringify(logoNameData));
+            localStorage.setItem('logoDomainDataLS', JSON.stringify(logoDomainData));
+
+            savedIntoFavorite = false;
+            localStorage.setItem('savedIntoFavoriteLS', savedIntoFavorite);
+        });
+    };
 };
 
 displayingTheStoredData();
