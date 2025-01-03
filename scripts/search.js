@@ -8,8 +8,6 @@ const logoNameData = [];
 const logoDomainData = [];
 let isFavoriteContainerActive = false;
 
-// https://api.brandfetch.io/v2/search/${searchBar.value}?c=1idUXSK9JRPRbE6bhZn
-
 // SEARCH FOR A LOGO
 async function searchForLogo() {
     // FETCHING DATA FROM AN API
@@ -194,7 +192,6 @@ async function searchForLogo() {
         });
     };
 };
-
 
 // INITIALIZING BUTTONS
 searchButton.addEventListener('click', e => {e.preventDefault(); searchForLogo()});
