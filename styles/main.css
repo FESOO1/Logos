@@ -33,6 +33,7 @@ body {
 */
 
 .logos-input-container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -224,4 +225,12 @@ body {
     color: white;
     font-size: 1.2rem;
     margin-left: 40px;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 500px) {
+    .logos-input {
+        width: 100%;
+    }
 }
