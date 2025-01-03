@@ -236,7 +236,6 @@ function displayingTheStoredData() {
     const copyButtons = logosOutputFavorites.querySelectorAll('.logo-output-button-copy');
     const favoritesButtons = logosOutputFavorites.querySelectorAll('.logo-output-button-favorite');
 
-
     for (let i = 0; i < copyButtons.length; i++) {
         // COPY BUTTON
         copyButtons[i].addEventListener('click', () => {
