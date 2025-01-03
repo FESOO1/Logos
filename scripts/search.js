@@ -11,13 +11,12 @@ let isFavoriteContainerActive = false;
 // https://api.brandfetch.io/v2/search/${searchBar.value}?c=1idUXSK9JRPRbE6bhZn
 
 // SEARCH FOR A LOGO
-
 async function searchForLogo() {
     // FETCHING DATA FROM AN API
     const searchInput = logosInputItself.value.toLowerCase();
     const response = await fetch(`https://api.brandfetch.io/v2/search/${searchInput}?c=1idUXSK9JRPRbE6bhZn`);
     const logoData = await response.json();
-    
+
     // RESETTING THE OUTPUT CONTAINER
     logosOutput.innerHTML = '';
     
