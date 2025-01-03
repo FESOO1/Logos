@@ -230,6 +230,9 @@ body {
 /* MEDIA QUERIES */
 
 @media (max-width: 500px) {
+    .logos {
+        padding: 40px 15px;
+    }
     .logos-input {
         width: 100%;
     }
