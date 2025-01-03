@@ -89,13 +89,11 @@ async function searchForLogo() {
                 `;
 
                 // PUSHING THE SAVED ELEMENT'S OUTPUT INTO ARRAYS
-                logoNameLowerData.push(logoData[i].name.toLowerCase());
                 logoIconData.push(logoData[i].icon);
                 logoNameData.push(logoData[i].name);
                 logoDomainData.push(logoData[i].domain);
 
                 // STORING THE ABOVE ARRAYS IN LOCAL STORAGE AND FAVORITE CONTAINER'S VARIABLE
-                localStorage.setItem('logoNameLowerDataLS', JSON.stringify(logoNameLowerData));
                 localStorage.setItem('logoIconDataLS', JSON.stringify(logoIconData));
                 localStorage.setItem('logoNameDataLS', JSON.stringify(logoNameData));
                 localStorage.setItem('logoDomainDataLS', JSON.stringify(logoDomainData));
