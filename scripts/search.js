@@ -13,12 +13,13 @@ let isFavoriteContainerActive = false;
 // SEARCH FOR A LOGO
 
 async function searchForLogo() {
-    const searchInput = logosInputItself.value.toLowerCase();
-
-
+    
+    // 
     logosOutput.innerHTML = '';
-
+    
+    // CHECKING IF INPUT IS EMPTY OR NOT
     if (logosInputItself.value.length > 0) {
+        const searchInput = logosInputItself.value.toLowerCase();
         const response = await fetch(`https://api.brandfetch.io/v2/search/${searchInput}?c=1idUXSK9JRPRbE6bhZn`);
         const logoData = await response.json();
 
