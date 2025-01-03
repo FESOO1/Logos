@@ -19,10 +19,12 @@ async function searchForLogo() {
     
     // CHECKING IF INPUT IS EMPTY OR NOT
     if (logosInputItself.value.length > 0) {
+        // FETCHING DATA FROM AN API
         const searchInput = logosInputItself.value.toLowerCase();
         const response = await fetch(`https://api.brandfetch.io/v2/search/${searchInput}?c=1idUXSK9JRPRbE6bhZn`);
         const logoData = await response.json();
 
+        // USING THE API TO DISPLAY DATA
         let i = 0;
         while (i < logoData.length) {
             // CREATING AN ELEMENT
