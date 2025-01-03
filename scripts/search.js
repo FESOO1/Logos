@@ -15,6 +15,9 @@ let isFavoriteContainerActive = false;
 async function searchForLogo() {
     const searchInput = logosInputItself.value.toLowerCase();
 
+
+    logosOutput.innerHTML = '';
+
     if (logosInputItself.value.length > 0) {
         const response = await fetch(`https://api.brandfetch.io/v2/search/${searchInput}?c=1idUXSK9JRPRbE6bhZn`);
         const logoData = await response.json();
@@ -47,10 +50,8 @@ async function searchForLogo() {
             i++;
         };
 
-        // 
-        logosOutput.innerHTML = '';
-
-        // 
+        // RESETTING
+        logosInputItself.value = '';
         errorParagraph.textContent = '';
     } else {
         errorParagraph.textContent = 'Enter a logo name.';
