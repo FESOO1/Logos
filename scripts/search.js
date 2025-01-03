@@ -15,13 +15,13 @@ let isFavoriteContainerActive = false;
 async function searchForLogo() {
     const searchInput = logosInputItself.value.toLowerCase();
 
-    const response = await fetch(`https://api.brandfetch.io/v2/search/${searchInput}?c=1idUXSK9JRPRbE6bhZn`);
-    const logoData = await response.json();
+    if (logosInputItself.value.length === '') {
+        const response = await fetch(`https://api.brandfetch.io/v2/search/${searchInput}?c=1idUXSK9JRPRbE6bhZn`);
+        const logoData = await response.json();
 
-    let i = 0;
-    while (i < logoData.length) {
-        // CREATING AN ELEMENT
-        if (!(logosInputItself.value.length === '')) {
+        let i = 0;
+        while (i < logoData.length) {
+            // CREATING AN ELEMENT
             const outputItself = document.createElement('div');
             outputItself.classList.add('logo-output');
             outputItself.innerHTML = `
@@ -42,12 +42,18 @@ async function searchForLogo() {
                 </div>
             `;
             logosOutput.appendChild(outputItself);
-        } else {
-            errorParagraph.textContent = 'Please enter a logo name.';
+            
+            // INCREMENTING 
+            i++;
         };
-        
-        // INCREMENTING 
-        i++;
+
+        // 
+        logosOutput.innerHTML = '';
+
+        // 
+        errorParagraph.textContent = '';
+    } else {
+        errorParagraph.textContent = 'Enter a logo name.';
     };
 
     // FAVORITE AND COPY ICON BUTTONS
