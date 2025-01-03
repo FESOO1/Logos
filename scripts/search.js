@@ -14,7 +14,7 @@ let isFavoriteContainerActive = false;
 
 async function searchForLogo() {
     
-    // 
+    // RESETTING THE OUTPUT CONTAINER
     logosOutput.innerHTML = '';
     
     // CHECKING IF INPUT IS EMPTY OR NOT
