@@ -187,9 +187,6 @@ async function searchForLogo() {
 // INITIALIZING BUTTONS
 searchButton.addEventListener('click', e => {e.preventDefault(); searchForLogo()});
 
-
-
-
 // DIPLAYING THE STORED DATA
 
 function displayingTheStoredData() {
