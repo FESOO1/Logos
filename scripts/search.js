@@ -3,8 +3,6 @@ const searchButton = document.getElementById('searchButton');
 const errorParagraph = document.querySelector('.logos-input-paragraph');
 const logosOutput = document.querySelector('.logos-output');
 const logosOutputFavorites = document.querySelector('.logos-output-favorites');
-const logoSearchFavoriteData = [];
-const logoNameLowerData = [];
 const logoIconData = [];
 const logoNameData = [];
 const logoDomainData = [];
@@ -123,13 +121,11 @@ async function searchForLogo() {
                 };
 
                 // REMOVING ITEMS FROM LOCAL STORAGE
-                logoNameLowerData.splice(clickedElement, 1);
                 logoIconData.splice(clickedElement, 1);
                 logoNameData.splice(clickedElement, 1);
                 logoDomainData.splice(clickedElement, 1);
                 
                 // UPDATING THE ARRAYS THAT ARE STORED IN LOCAL STORAGE
-                localStorage.setItem('logoNameLowerDataLS', JSON.stringify(logoNameLowerData));
                 localStorage.setItem('logoIconDataLS', JSON.stringify(logoIconData));
                 localStorage.setItem('logoNameDataLS', JSON.stringify(logoNameData));
                 localStorage.setItem('logoDomainDataLS', JSON.stringify(logoDomainData));
@@ -152,7 +148,6 @@ searchButton.addEventListener('click', e => {e.preventDefault(); searchForLogo()
 
 function displayingTheStoredData() {
     const isFavoriteContainerActiveLS = localStorage.getItem('isFavoriteContainerActiveLS');
-    const logoNameLowerDataLS = JSON.parse(localStorage.getItem('logoNameLowerDataLS'));
     const logoIconDataLS = JSON.parse(localStorage.getItem('logoIconDataLS'));
     const logoNameDataLS = JSON.parse(localStorage.getItem('logoNameDataLS'));
     const logoDomainDataLS = JSON.parse(localStorage.getItem('logoDomainDataLS'));
@@ -185,7 +180,6 @@ function displayingTheStoredData() {
             `;
 
             // UPDATING THE ARRAYS
-            logoNameLowerData.push(logoNameLowerDataLS[i]);
             logoIconData.push(logoIconDataLS[i]);
             logoNameData.push(logoNameDataLS[i]);
             logoDomainData.push(logoDomainDataLS[i]);
