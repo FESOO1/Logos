@@ -15,7 +15,7 @@ let isFavoriteContainerActive = false;
 async function searchForLogo() {
     const searchInput = logosInputItself.value.toLowerCase();
 
-    if (logosInputItself.value.length === '') {
+    if (logosInputItself.value.length > 0) {
         const response = await fetch(`https://api.brandfetch.io/v2/search/${searchInput}?c=1idUXSK9JRPRbE6bhZn`);
         const logoData = await response.json();
 
