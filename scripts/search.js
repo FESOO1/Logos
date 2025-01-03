@@ -280,5 +280,3 @@ function displayingTheStoredData() {
 };
 
 displayingTheStoredData();
-
-/* console.log(logoNameLowerData.indexOf('apple')); */
