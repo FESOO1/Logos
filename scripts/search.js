@@ -106,11 +106,15 @@ async function searchForLogo() {
                 savedIntoFavorite = true;
                 localStorage.setItem('savedIntoFavoriteLS', savedIntoFavorite);
             } else {
+                const clickedElementName = logoData[i].name;
+                const clickedElement = logoNameData.indexOf(clickedElementName);
+
+                // REMOVING THE CLASS FROM THE BUTTON
                 favoriteButtons[i].classList.remove('logo-output-button-favorited');
                 
                 // REMOVING THE ELEMENT FROM THE FAVORITE CONTAINER
                 const logoOutput = logosOutputFavorites.querySelectorAll('.logo-output');
-                logosOutputFavorites.removeChild(logoOutput[i]);
+                logosOutputFavorites.removeChild(logoOutput[clickedElement]);
 
                 // DEACTIVATING THE FAVORITE CONTAINER IF IT HAS NO ELEMENT
                 if (logosOutputFavorites.childElementCount === 1) {
@@ -118,10 +122,6 @@ async function searchForLogo() {
                     logosOutputFavorites.classList.remove('logos-output-favorites-active');
                 };
 
-                // 
-                const clickedElementName = logoData[i].name;
-                const clickedElement = logoNameData.indexOf(clickedElementName);
-                console.log(clickedElement);
                 // REMOVING ITEMS FROM LOCAL STORAGE
                 logoNameLowerData.splice(clickedElement, 1);
                 logoIconData.splice(clickedElement, 1);
