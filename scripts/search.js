@@ -116,6 +116,7 @@ async function searchForLogo() {
                 if (logosOutputFavorites.childElementCount === 1) {
                     isFavoriteContainerActive = false;
                     logosOutputFavorites.classList.remove('logos-output-favorites-active');
+                    localStorage.setItem('isFavoriteContainerActiveLS', isFavoriteContainerActive);
                 };
 
                 // REMOVING ITEMS FROM LOCAL STORAGE
@@ -161,6 +162,7 @@ async function searchForLogo() {
                     if (logosOutputFavorites.childElementCount === 1) {
                         isFavoriteContainerActive = false;
                         logosOutputFavorites.classList.remove('logos-output-favorites-active');
+                        localStorage.setItem('isFavoriteContainerActiveLS', isFavoriteContainerActive);
                     };
 
                     // REMOVING ITEMS FROM LOCAL STORAGE
